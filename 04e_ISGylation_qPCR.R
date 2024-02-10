@@ -36,25 +36,25 @@ plot<- summary_data %>% group_by(Target.Name, Sample.Name) %>%
     unique() %>%
     filter(Target.Name != "GAPDH")
 
-### Create Figure 1E
-plot_TRAILR4 <- plot %>% filter(Target.Name == "TRAILR4")
-ggplot(plot_TRAILR4, aes(x = factor(Sample.Name, levels = c("WT", "KO")))) +
-    geom_bar(position=position_dodge(),
-             aes(y=Expression),
-             stat="identity",
-             fill = "white",
-             color = "black") +
-    geom_errorbar(aes(ymin = lower_error,
-                      ymax = upper_error),
-                  width = .5,
-                  color = "black") +
-    theme_classic() +
-    xlab(NULL) +
-    ylab("TRAILR4 expression\nnormalized to GAPDH") +
-    theme(legend.position = "none") +
-    scale_x_discrete(labels = c("WT", "PARP13\nKO"))
-ggsave("TRAILR4_expression_HEK_qPCR.jpeg", 
-       units = "in", height = 2, width = 2)
+# ### Create Figure 1E
+# plot_TRAILR4 <- plot %>% filter(Target.Name == "TRAILR4")
+# ggplot(plot_TRAILR4, aes(x = factor(Sample.Name, levels = c("WT", "KO")))) +
+#     geom_bar(position=position_dodge(),
+#              aes(y=Expression),
+#              stat="identity",
+#              fill = "white",
+#              color = "black") +
+#     geom_errorbar(aes(ymin = lower_error,
+#                       ymax = upper_error),
+#                   width = .5,
+#                   color = "black") +
+#     theme_classic() +
+#     xlab(NULL) +
+#     ylab("TRAILR4 expression\nnormalized to GAPDH") +
+#     theme(legend.position = "none") +
+#     scale_x_discrete(labels = c("WT", "PARP13\nKO"))
+# ggsave("TRAILR4_expression_HEK_qPCR.jpeg", 
+#        units = "in", height = 2, width = 2)
 
 ##### replicate data
 qPCR2<-read.csv("data/20220106.csv")

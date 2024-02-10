@@ -12,9 +12,9 @@ library( scales );
 ######### WT vs KO IC (IC2) ########
 revigo.names <- c("term_ID","description","frequency","plot_X","plot_Y","log_size","value","uniqueness","dispensability");
 revigo.data <- rbind(c("GO:0034976","response to endoplasmic reticulum stress",1.2175187418973,-5.72089191607853,-3.11136073326826,2.33645973384853,-9.99139982823808,0.814599010760252,0),
-c("GO:1905897","regulation of response to endoplasmic reticulum stress",0.456569528211488,2.11202954329701,4.43514874229215,1.91381385238372,-6.09097914578884,0.826398848170483,0),
+c("GO:1905897","reg. response to endoplasmic reticulum stress",0.456569528211488,2.11202954329701,4.43514874229215,1.91381385238372,-6.09097914578884,0.826398848170483,0),
 c("GO:0022900","electron transport chain",0.930049038949326,4.61460510289546,-3.29727937987509,2.22010808804005,-7.03198428600636,0.960689762850783,0.00512444),
-c("GO:1900118","negative regulation of execution phase of apoptosis",0.124006538526577,-2.24331494619971,5.64907144109105,1.36172783601759,-5.02965312376991,0.748856719400529,0.02866141),
+c("GO:1900118","neg. regulation of execution phase of apoptosis",0.124006538526577,-2.24331494619971,5.64907144109105,1.36172783601759,-5.02965312376991,0.748856719400529,0.02866141),
 c("GO:0010941","regulation of cell death",8.87210416549236,5.32159203325518,1.48662445620919,3.19728055812562,-5.68613277963085,0.947182476711719,0.04432994),
 c("GO:0006091","generation of precursor metabolites and energy",2.19829772842568,3.04533614577627,-6.13757502315202,2.59217675739587,-5.20411998265593,0.957928559133036,0.12986242),
 c("GO:0006950","response to stress",18.5727974747759,-5.89570723050972,1.46667273121342,3.51798720302508,-5.08671609823958,0.920898880571446,0.14469001),
@@ -44,7 +44,7 @@ ggplot(one.data, aes(x = -value, y = reorder(description, -value),
           axis.text.y = element_text(size = 12),
           legend.text = element_text(size = 12))
 ggsave("Revigo_IC2_WT.jpg", 
-       width = 7, height = 3, 
+       width = 6, height = 3, 
        units = "in")
 
 
@@ -59,7 +59,7 @@ revigo.data <- rbind(c("GO:0002252","immune effector process",2.4012175187419,3.
                      c("GO:0044419","biological process of interspecies interaction",8.57336114086015,0.852281910692247,-8.37187325467899,3.18241465243455,-10.7235381958268,1,0),
                      c("GO:0048525","negative regulation of viral process",0.507299475790542,5.77002984842702,2.98592410266736,1.95904139232109,-36.5114492834996,0.863657610801178,0),
                      c("GO:0050896","response to stimulus",44.9241869116735,1.43763219909277,-0.941129861511749,3.90151280912994,-28.5968794788242,1,0),
-                     c("GO:0043903","regulation of biological process in symbiotic interaction",0.321289668000676,-0.222059903472274,-6.71988307988924,1.76342799356294,-30.9546770212133,0.966929538647436,0.02644702),
+                     c("GO:0043903","reg. of bio. process in symbiotic interaction",0.321289668000676,-0.222059903472274,-6.71988307988924,1.76342799356294,-30.9546770212133,0.966929538647436,0.02644702),
                      c("GO:0050792","regulation of viral process",0.884955752212389,-0.2253132104918,2.95550961037339,2.19865708695442,-31.7121982700698,0.963277133943988,0.02912362),
                      c("GO:0031347","regulation of defense response",3.4214531311651,3.90129185767291,-4.67730676475482,2.78390357927274,-15.9244530386075,0.780637289486942,0.03598432),
                      c("GO:0002697","regulation of immune effector process",1.96719463389888,6.98433051187871,-0.03134824899057,2.54406804435028,-11.7189666327523,0.787559520352563,0.03992004),
@@ -116,5 +116,5 @@ ggplot(one.data, aes(x = -value, y = reorder(description, -value),
           legend.text = element_text(size = 12),
           legend.position = "none") # I removed the legend bc it's in another ggplot, but you probably want to include it
 ggsave("Revigo_IC3.jpg", 
-       width = 7, height = 6.5, 
+       width = 5.5, height = 6.5, 
        units = "in")

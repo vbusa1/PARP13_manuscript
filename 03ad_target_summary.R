@@ -64,7 +64,13 @@ ggsave("localization_proportion.jpeg", width = 4.5, height = 3, units = "in")
 
 
 ### stats
-see<-read.csv("PARP13 Table of Values.csv") # just to pull list of all genes
+see<-read.csv("PARP13 Table of Values.csv")[,c("genename",
+                                               "RNASEQ.SET.2.KO.vs.WT.SS.log2FoldChange", 
+                                               "RNASEQ.SET.2.P3.vs.SS.WT.log2FoldChange",
+                                               "RNASEQ.SET.2.KO.vs.WT.3P.log2FoldChange", 
+                                               "RNASEQ.SET.2.P3.vs.SS.KO.log2FoldChange")] # just to pull list of all genes
+see <- see[which(rowSums(see[,2:5], na.rm = T) != 0),]
+
 both<- CLIP %>% filter(treat == "both") %>% 
     select(V8) %>% unlist() %>% unique()
 
@@ -75,7 +81,7 @@ ER_loc<-matrix(c(sum(both %in% ER_APEX$Gene.name),
                nrow = 2,
                dimnames = list(ER = c("loc", "not loc"),
                                PARP13 = c("bound", "not bound")))
-fisher.test(ER_loc, alternative = "greater")$p.value #2.961706e-132
+fisher.test(ER_loc, alternative = "greater")$p.value #1.672472e-111
 
 
 cyt_loc<-matrix(c(sum(WT3P$V8 %in% cyt_APEX$Gene.name),
@@ -85,4 +91,5 @@ cyt_loc<-matrix(c(sum(WT3P$V8 %in% cyt_APEX$Gene.name),
                 nrow = 2,
                 dimnames = list(cyt = c("loc", "not loc"),
                                 PARP13 = c("bound", "not bound")))
-fisher.test(cyt_loc, alternative = "greater")$p.value #1.036058e-69
+fisher.test(cyt_loc, alternative = "greater")$p.value #6.714163e-120
+

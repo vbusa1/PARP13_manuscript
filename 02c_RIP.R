@@ -62,16 +62,16 @@ ggplot(plot, aes(x = factor(Target.Name,
              stat="identity",
              color = "black",
              fill = "white",
-             size = 1) +
+             size = .7) +
     geom_errorbar(width=0.5,
-                  size = 1) +
+                  size = .8) +
     theme_classic() +
     theme(text = element_text(size = 14),
           legend.title = element_blank(),
-          axis.text.x = element_text(angle = 45, h = 1)) +
+          axis.text.x = element_text(angle = 65, h = 1)) +
     xlab(NULL) +
     ylab("IP enrichment relative to TBP") +
     scale_y_log10()
-ggsave("PARP13_IP.jpeg", width = 7, height = 3.5, units = "in")
+ggsave("PARP13_IP.jpeg", width = 3.5, height = 3.5, units = "in")
 
 
